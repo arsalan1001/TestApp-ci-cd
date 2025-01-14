@@ -8,20 +8,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-     steps:
+    steps:
       - name: Check out code 
-          uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4.2.2
 
 
       - name : Setup .Net8
-        - uses: actions/setup-dotnet@v4
-         with:
+        uses: actions/setup-dotnet@v4
+        with:
          dotnet-version: '8.0.x'
 
       - name : dotnet Restore dependencies
         run : dotnet restore
 
+      - name : Build App
+        run : dotnet build -c Release --no-restore
+       
+          
 
-       -name : Build App
-        run : dotnet build -c Release --no-restore  
+   
+
+        
       
